@@ -1,4 +1,4 @@
-require 'roadmap'
+require_relative 'roadmap'
 require 'httparty'
 require 'json'
 

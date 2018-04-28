@@ -1,4 +1,4 @@
-class Roadmap
+module Roadmap
   def get_roadmap(chain_id)
     response = self.class.get("/roadmaps/#{chain_id}",
       body: { "id" => chain_id },
