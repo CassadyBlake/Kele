@@ -45,5 +45,4 @@ class Kele
     )
     JSON.parse(response.body)
   end
-
 end
