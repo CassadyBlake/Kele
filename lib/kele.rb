@@ -1,4 +1,5 @@
 require_relative 'roadmap'
+require_relative 'messages'
 require 'httparty'
 require 'json'
 
@@ -6,6 +7,7 @@ class Kele
   include HTTParty
   include JSON
   include Roadmap
+  include Messages
 
   base_uri 'https://www.bloc.io/api/v1'
 
@@ -19,6 +21,7 @@ class Kele
     end
 
     @auth_token = response['auth_token']
+    @user_email = response['user']['email']
   end
 
   def get_me
