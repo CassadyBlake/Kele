@@ -13,29 +13,17 @@ module Messages
     JSON.parse(response.body)
   end
 
-  def create_message(recipient_id, subject, body, token = "new")
-    if token == "new"
-      response = self.class.post("/messages",
-      headers: { "authorization" => @auth_token },
-      body: {
-        "sender" => @user_email,
-        "recipient_id" => recipient_id,
-        "subject" => subject,
-        "stripped-text" => body
-      }
-      )
-    else
-      response = self.class.post("/messages",
-      headers: { "authorization" => @auth_token },
-      body: {
-        "sender" => @user_email,
-        "recipient_id" => recipient_id,
-        "token" => token,
-        "subject" => subject,
-        "stripped-text" => body
-      }
-      )
-    end
+  def create_message(recipient_id, subject, body, token = nil)
+    response = self.class.post("/messages",
+    headers: { "authorization" => @auth_token },
+    body: {
+      "sender" => @user_email,
+      "recipient_id" => recipient_id,
+      "token" => token,
+      "subject" => subject,
+      "stripped-text" => body
+    }
+    )
   end
-  
+
 end
